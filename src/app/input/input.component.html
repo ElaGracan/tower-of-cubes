@@ -1,0 +1,45 @@
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="exampleInputBoxes1">Number of Cubes</label>
+      <input type="number" [(ngModel)]="numOfCubes" (change)="onChangeNum($event)" name="item" class="form-control" placeholder="{{numOfCubes}}">
+      <small id="emailHelp" class="form-text text-muted">Unesite broj N</small>
+    </div>
+
+  </form>
+
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Set test case
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" (click)="setExample(1)" href="#">Set example input 1</a>
+      <a class="dropdown-item" (click)="setExample(2)" href="#">Set example input 2</a>
+
+    </div>
+  </div>
+
+  <hr>
+
+    <form *ngFor="let x of [].constructor(numOfCubes); let i = index">
+      <div class="form-group row mb-2">
+        <label for="exampleInputBoxes1">Cube {{i+1}}</label>
+        <div class="col-md" *ngFor="let z  of [].constructor(6); let j = index"  name="item">
+          <p></p>
+          <input (change)="onChangeColor($event, i)"  class="col" type="number" class="form-control" id="exampleInputBoxes1" placeholder="{{cubes[i][j]}}" min="1" max="100">
+        </div>
+
+      </div>
+    </form>
+  <hr>
+  <button data-toggle="collapse" (click)="tallestTower()" data-target="#outputCollapse" type="button" class="btn btn-primary">Calculate tallest tower</button>
+  <div class="collapse" id="outputCollapse" aria-expanded="false">
+    <app-output></app-output>
+  </div>
+
+  <div>
+
+  </div>
+
+</div>
+
